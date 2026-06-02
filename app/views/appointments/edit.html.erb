@@ -1,0 +1,16 @@
+<% content_for :title, "Editar cita" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Editar cita</h1>
+      <p class="page-subtitle"><%= @appointment.patient.full_name %> · <%= @appointment.scheduled_at&.strftime("%d/%m/%Y") %></p>
+    </div>
+  </div>
+
+  <%= render "form", appointment: @appointment %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", @appointment, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

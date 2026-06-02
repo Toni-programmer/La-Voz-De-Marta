@@ -1,0 +1,16 @@
+<% content_for :title, "Nuevo testimonio" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nuevo testimonio</h1>
+      <p class="page-subtitle">Añade la opinión de un paciente o familiar</p>
+    </div>
+  </div>
+
+  <%= render "form", testimonial: @testimonial %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", testimonials_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

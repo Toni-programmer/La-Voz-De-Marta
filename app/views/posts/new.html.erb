@@ -1,0 +1,16 @@
+<% content_for :title, "Nueva entrada" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nueva entrada de blog</h1>
+      <p class="page-subtitle">Escribe un artículo para la web</p>
+    </div>
+  </div>
+
+  <%= render "form", post: @post %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", posts_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

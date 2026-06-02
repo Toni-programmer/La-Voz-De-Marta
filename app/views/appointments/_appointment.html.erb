@@ -1,0 +1,30 @@
+<div class="detail-card" id="<%= dom_id appointment %>">
+  <div class="detail-row">
+    <span class="detail-label">Paciente</span>
+    <span class="detail-value"><%= link_to appointment.patient.full_name, appointment.patient, style: "color: var(--sage-dark)" %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Terapeuta</span>
+    <span class="detail-value"><%= appointment.therapist.name %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Servicio</span>
+    <span class="detail-value"><%= appointment.service.name %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Fecha y hora</span>
+    <span class="detail-value"><%= appointment.scheduled_at&.strftime("%d/%m/%Y a las %H:%M") %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Estado</span>
+    <span class="detail-value">
+      <% if appointment.status.present? %>
+        <span class="status-badge status-<%= appointment.status %>"><%= appointment.status.capitalize %></span>
+      <% else %>—<% end %>
+    </span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Notas</span>
+    <span class="detail-value"><%= appointment.notes.presence || "—" %></span>
+  </div>
+</div>

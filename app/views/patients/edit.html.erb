@@ -1,0 +1,16 @@
+<% content_for :title, "Editar paciente" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Editar paciente</h1>
+      <p class="page-subtitle"><%= @patient.full_name %></p>
+    </div>
+  </div>
+
+  <%= render "form", patient: @patient %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", @patient, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

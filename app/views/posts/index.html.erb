@@ -1,0 +1,40 @@
+<% content_for :title, "Blog" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Blog</h1>
+      <p class="page-subtitle">Artículos sobre logopedia, lenguaje y comunicación</p>
+    </div>
+    <%= link_to "Nueva entrada", new_post_path, class: "btn-primary" %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if @posts.any? %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Publicado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td><strong><%= post.title %></strong><br><span style="color:var(--mid-gray);font-size:13px"><%= post.excerpt&.truncate(80) %></span></td>
+            <td><%= post.published_at&.strftime("%d/%m/%Y") %></td>
+            <td class="actions">
+              <%= link_to "Ver", post, class: "btn-sm btn-sm-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="table-empty">No hay entradas todavía. <%= link_to "Escribe la primera", new_post_path %>.</div>
+  <% end %>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :title, "Editar testimonio" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Editar testimonio</h1>
+      <p class="page-subtitle"><%= @testimonial.author_name %></p>
+    </div>
+  </div>
+
+  <%= render "form", testimonial: @testimonial %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", @testimonial, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

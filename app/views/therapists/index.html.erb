@@ -1,0 +1,42 @@
+<% content_for :title, "Terapeutas" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Terapeutas</h1>
+      <p class="page-subtitle">Profesionales del centro</p>
+    </div>
+    <%= link_to "Nuevo terapeuta", new_therapist_path, class: "btn-primary" %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if @therapists.any? %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Nº de colegiado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @therapists.each do |therapist| %>
+          <tr>
+            <td><strong><%= therapist.name %></strong></td>
+            <td><%= therapist.email %></td>
+            <td><%= therapist.college_number %></td>
+            <td class="actions">
+              <%= link_to "Ver", therapist, class: "btn-sm btn-sm-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="table-empty">No hay terapeutas todavía. <%= link_to "Añade el primero", new_therapist_path %>.</div>
+  <% end %>
+</div>

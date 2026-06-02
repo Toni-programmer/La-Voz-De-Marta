@@ -1,0 +1,16 @@
+<% content_for :title, "Nuevo servicio" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nuevo servicio</h1>
+      <p class="page-subtitle">Añade un servicio al catálogo</p>
+    </div>
+  </div>
+
+  <%= render "form", service: @service %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", services_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

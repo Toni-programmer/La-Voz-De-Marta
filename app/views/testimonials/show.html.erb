@@ -1,0 +1,24 @@
+<% content_for :title, "Testimonio" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Testimonio</h1>
+      <p class="page-subtitle"><%= @testimonial.author_name %> · <%= @testimonial.role %></p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <%= link_to "Editar", edit_testimonial_path(@testimonial), class: "btn-sm btn-sm-secondary" %>
+      <%= button_to "Eliminar", @testimonial, method: :delete, class: "btn-sm btn-sm-danger", data: { turbo_confirm: "¿Seguro que quieres eliminar este testimonio?" } %>
+    </div>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <%= render @testimonial %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver a testimonios", testimonials_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="form-card" style="max-width:720px">
+  <%= form_with(model: post) do |form| %>
+    <% if post.errors.any? %>
+      <div class="form-errors">
+        <strong><%= pluralize(post.errors.count, "error") %></strong> impidieron guardar la entrada:
+        <ul>
+          <% post.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title, "Título" %>
+      <%= form.text_field :title, placeholder: "Ej: ¿Cuándo preocuparse por el lenguaje de mi hijo?" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :excerpt, "Resumen (se muestra en la home)" %>
+      <%= form.textarea :excerpt, placeholder: "Breve descripción del artículo...", rows: 2 %>
+    </div>
+    <div class="form-group">
+      <%= form.label :content, "Contenido" %>
+      <%= form.textarea :content, placeholder: "Escribe el artículo completo aquí...", rows: 12 %>
+    </div>
+    <div class="form-group">
+      <%= form.label :published_at, "Fecha de publicación" %>
+      <%= form.date_field :published_at %>
+    </div>
+
+    <%= form.submit post.new_record? ? "Publicar entrada" : "Guardar cambios", class: "form-btn" %>
+  <% end %>
+</div>

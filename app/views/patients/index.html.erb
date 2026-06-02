@@ -1,0 +1,46 @@
+<% content_for :title, "Pacientes" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Pacientes</h1>
+      <p class="page-subtitle">Gestión de pacientes del centro</p>
+    </div>
+    <%= link_to "Nuevo paciente", new_patient_path, class: "btn-primary" %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if @patients.any? %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Modalidad</th>
+          <th>Fecha de nacimiento</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @patients.each do |patient| %>
+          <tr>
+            <td><strong><%= patient.full_name %></strong></td>
+            <td><%= patient.phone %></td>
+            <td><%= patient.email %></td>
+            <td><%= patient.modality %></td>
+            <td><%= patient.birth_date&.strftime("%d/%m/%Y") %></td>
+            <td class="actions">
+              <%= link_to "Ver", patient, class: "btn-sm btn-sm-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="table-empty">No hay pacientes todavía. <%= link_to "Añade el primero", new_patient_path %>.</div>
+  <% end %>
+</div>

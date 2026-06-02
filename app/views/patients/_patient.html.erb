@@ -1,0 +1,26 @@
+<div class="detail-card" id="<%= dom_id patient %>">
+  <div class="detail-row">
+    <span class="detail-label">Nombre completo</span>
+    <span class="detail-value"><%= patient.full_name %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Fecha de nacimiento</span>
+    <span class="detail-value"><%= patient.birth_date&.strftime("%d/%m/%Y") %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Teléfono</span>
+    <span class="detail-value"><%= patient.phone %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Email</span>
+    <span class="detail-value"><%= patient.email %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Modalidad</span>
+    <span class="detail-value"><%= patient.modality %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Antecedentes</span>
+    <span class="detail-value"><%= patient.background %></span>
+  </div>
+</div>

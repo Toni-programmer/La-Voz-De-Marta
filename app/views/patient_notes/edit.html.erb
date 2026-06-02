@@ -1,0 +1,16 @@
+<% content_for :title, "Editar nota" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Editar nota de sesión</h1>
+      <p class="page-subtitle"><%= @patient_note.patient.full_name %> · <%= @patient_note.session_date&.strftime("%d/%m/%Y") %></p>
+    </div>
+  </div>
+
+  <%= render "form", patient_note: @patient_note %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", @patient_note, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

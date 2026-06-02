@@ -1,0 +1,29 @@
+<div class="form-card">
+  <%= form_with(model: patient_note) do |form| %>
+    <% if patient_note.errors.any? %>
+      <div class="form-errors">
+        <strong><%= pluralize(patient_note.errors.count, "error") %></strong> impidieron guardar la nota:
+        <ul>
+          <% patient_note.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :patient_id, "Paciente" %>
+      <%= form.collection_select :patient_id, @patients, :id, :full_name, { include_blank: "Selecciona un paciente..." } %>
+    </div>
+    <div class="form-group">
+      <%= form.label :session_date, "Fecha de sesión" %>
+      <%= form.date_field :session_date %>
+    </div>
+    <div class="form-group">
+      <%= form.label :content, "Notas de la sesión" %>
+      <%= form.textarea :content, placeholder: "Observaciones, objetivos trabajados, evolución...", rows: 6 %>
+    </div>
+
+    <%= form.submit patient_note.new_record? ? "Crear nota" : "Guardar cambios", class: "form-btn" %>
+  <% end %>
+</div>

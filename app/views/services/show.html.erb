@@ -1,0 +1,24 @@
+<% content_for :title, @service.name %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title"><%= @service.name %></h1>
+      <p class="page-subtitle">Ficha del servicio</p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <%= link_to "Editar", edit_service_path(@service), class: "btn-sm btn-sm-secondary" %>
+      <%= button_to "Eliminar", @service, method: :delete, class: "btn-sm btn-sm-danger", data: { turbo_confirm: "¿Seguro que quieres eliminar este servicio?" } %>
+    </div>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <%= render @service %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver a servicios", services_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

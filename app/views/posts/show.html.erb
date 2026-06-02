@@ -1,0 +1,24 @@
+<% content_for :title, @post.title %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title"><%= @post.title %></h1>
+      <p class="page-subtitle"><%= @post.published_at&.strftime("%d/%m/%Y") %></p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <%= link_to "Editar", edit_post_path(@post), class: "btn-sm btn-sm-secondary" %>
+      <%= button_to "Eliminar", @post, method: :delete, class: "btn-sm btn-sm-danger", data: { turbo_confirm: "¿Seguro que quieres eliminar esta entrada?" } %>
+    </div>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <%= render @post %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver al blog", posts_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

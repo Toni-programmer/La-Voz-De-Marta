@@ -1,0 +1,44 @@
+<% content_for :title, "Servicios" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Servicios</h1>
+      <p class="page-subtitle">Catálogo de servicios del centro</p>
+    </div>
+    <%= link_to "Nuevo servicio", new_service_path, class: "btn-primary" %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if @services.any? %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Modalidad</th>
+          <th>Duración</th>
+          <th>Precio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |service| %>
+          <tr>
+            <td><strong><%= service.name %></strong></td>
+            <td><%= service.modality %></td>
+            <td><%= "#{service.duration_minutes} min" if service.duration_minutes.present? %></td>
+            <td><%= "#{service.price} €" if service.price.present? %></td>
+            <td class="actions">
+              <%= link_to "Ver", service, class: "btn-sm btn-sm-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="table-empty">No hay servicios todavía. <%= link_to "Añade el primero", new_service_path %>.</div>
+  <% end %>
+</div>

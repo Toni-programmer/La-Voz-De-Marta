@@ -1,0 +1,42 @@
+<% content_for :title, "Testimonios" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Testimonios</h1>
+      <p class="page-subtitle">Opiniones de pacientes y familias</p>
+    </div>
+    <%= link_to "Nuevo testimonio", new_testimonial_path, class: "btn-primary" %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if @testimonials.any? %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Autor</th>
+          <th>Perfil</th>
+          <th>Testimonio</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @testimonials.each do |t| %>
+          <tr>
+            <td><strong><%= t.author_name %></strong></td>
+            <td><%= t.role %></td>
+            <td style="max-width:320px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap"><%= t.content %></td>
+            <td class="actions">
+              <%= link_to "Ver", t, class: "btn-sm btn-sm-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="table-empty">No hay testimonios todavía. <%= link_to "Añade el primero", new_testimonial_path %>.</div>
+  <% end %>
+</div>

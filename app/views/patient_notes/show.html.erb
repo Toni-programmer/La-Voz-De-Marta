@@ -1,0 +1,24 @@
+<% content_for :title, "Nota de sesión" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nota de sesión</h1>
+      <p class="page-subtitle"><%= @patient_note.patient.full_name %> · <%= @patient_note.session_date&.strftime("%d/%m/%Y") %></p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <%= link_to "Editar", edit_patient_note_path(@patient_note), class: "btn-sm btn-sm-secondary" %>
+      <%= button_to "Eliminar", @patient_note, method: :delete, class: "btn-sm btn-sm-danger", data: { turbo_confirm: "¿Seguro que quieres eliminar esta nota?" } %>
+    </div>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <%= render @patient_note %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver a notas", patient_notes_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

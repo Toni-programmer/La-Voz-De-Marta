@@ -1,0 +1,16 @@
+<% content_for :title, "Nuevo paciente" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nuevo paciente</h1>
+      <p class="page-subtitle">Rellena los datos del paciente</p>
+    </div>
+  </div>
+
+  <%= render "form", patient: @patient %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", patients_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

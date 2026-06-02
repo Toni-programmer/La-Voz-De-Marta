@@ -1,0 +1,41 @@
+<div class="form-card">
+  <%= form_with(model: patient) do |form| %>
+    <% if patient.errors.any? %>
+      <div class="form-errors">
+        <strong><%= pluralize(patient.errors.count, "error") %></strong> impidieron guardar el paciente:
+        <ul>
+          <% patient.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :full_name, "Nombre completo" %>
+      <%= form.text_field :full_name, placeholder: "Nombre y apellidos" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :birth_date, "Fecha de nacimiento" %>
+      <%= form.date_field :birth_date %>
+    </div>
+    <div class="form-group">
+      <%= form.label :phone, "Teléfono" %>
+      <%= form.text_field :phone, placeholder: "612 345 678" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :email, "Email" %>
+      <%= form.text_field :email, placeholder: "correo@ejemplo.com" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :modality, "Modalidad" %>
+      <%= form.select :modality, [["Presencial", "presencial"], ["Online", "online"], ["Ambas", "ambas"]], { include_blank: "Selecciona..." } %>
+    </div>
+    <div class="form-group">
+      <%= form.label :background, "Antecedentes / Motivo de consulta" %>
+      <%= form.textarea :background, placeholder: "Describe brevemente el caso...", rows: 4 %>
+    </div>
+
+    <%= form.submit patient.new_record? ? "Crear paciente" : "Guardar cambios", class: "form-btn" %>
+  <% end %>
+</div>

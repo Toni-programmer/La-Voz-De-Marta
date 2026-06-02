@@ -1,0 +1,22 @@
+<div class="detail-card" id="<%= dom_id service %>">
+  <div class="detail-row">
+    <span class="detail-label">Nombre</span>
+    <span class="detail-value"><%= service.name %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Descripción</span>
+    <span class="detail-value"><%= service.description %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Modalidad</span>
+    <span class="detail-value"><%= service.modality %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Precio</span>
+    <span class="detail-value"><%= "#{service.price} €" if service.price.present? %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Duración</span>
+    <span class="detail-value"><%= "#{service.duration_minutes} minutos" if service.duration_minutes.present? %></span>
+  </div>
+</div>

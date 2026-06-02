@@ -1,0 +1,24 @@
+<% content_for :title, "Cita — #{@appointment.patient.full_name}" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Cita</h1>
+      <p class="page-subtitle"><%= @appointment.patient.full_name %> · <%= @appointment.scheduled_at&.strftime("%d/%m/%Y") %></p>
+    </div>
+    <div style="display:flex;gap:10px">
+      <%= link_to "Editar", edit_appointment_path(@appointment), class: "btn-sm btn-sm-secondary" %>
+      <%= button_to "Eliminar", @appointment, method: :delete, class: "btn-sm btn-sm-danger", data: { turbo_confirm: "¿Seguro que quieres eliminar esta cita?" } %>
+    </div>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <%= render @appointment %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver a citas", appointments_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

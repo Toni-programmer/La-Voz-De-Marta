@@ -1,0 +1,37 @@
+<div class="form-card">
+  <%= form_with(model: service) do |form| %>
+    <% if service.errors.any? %>
+      <div class="form-errors">
+        <strong><%= pluralize(service.errors.count, "error") %></strong> impidieron guardar el servicio:
+        <ul>
+          <% service.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :name, "Nombre" %>
+      <%= form.text_field :name, placeholder: "Ej: Logopedia infantil" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :description, "Descripción" %>
+      <%= form.textarea :description, placeholder: "Describe el servicio...", rows: 3 %>
+    </div>
+    <div class="form-group">
+      <%= form.label :modality, "Modalidad" %>
+      <%= form.select :modality, [["Presencial", "presencial"], ["Online", "online"], ["Ambas", "ambas"]], { include_blank: "Selecciona..." } %>
+    </div>
+    <div class="form-group">
+      <%= form.label :price, "Precio (€)" %>
+      <%= form.text_field :price, placeholder: "45.00" %>
+    </div>
+    <div class="form-group">
+      <%= form.label :duration_minutes, "Duración (minutos)" %>
+      <%= form.number_field :duration_minutes, placeholder: "50" %>
+    </div>
+
+    <%= form.submit service.new_record? ? "Crear servicio" : "Guardar cambios", class: "form-btn" %>
+  <% end %>
+</div>

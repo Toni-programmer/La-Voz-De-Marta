@@ -1,0 +1,16 @@
+<% content_for :title, "Nueva cita" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nueva cita</h1>
+      <p class="page-subtitle">Programa una nueva cita</p>
+    </div>
+  </div>
+
+  <%= render "form", appointment: @appointment %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", appointments_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

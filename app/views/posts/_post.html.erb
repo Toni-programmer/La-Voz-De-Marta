@@ -1,0 +1,18 @@
+<div class="detail-card" id="<%= dom_id post %>">
+  <div class="detail-row">
+    <span class="detail-label">Título</span>
+    <span class="detail-value"><%= post.title %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Resumen</span>
+    <span class="detail-value"><%= post.excerpt %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Contenido</span>
+    <span class="detail-value" style="white-space:pre-wrap"><%= post.content %></span>
+  </div>
+  <div class="detail-row">
+    <span class="detail-label">Publicado</span>
+    <span class="detail-value"><%= post.published_at&.strftime("%d/%m/%Y") || "—" %></span>
+  </div>
+</div>

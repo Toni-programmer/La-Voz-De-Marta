@@ -1,0 +1,16 @@
+<% content_for :title, "Nueva nota" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nueva nota de sesión</h1>
+      <p class="page-subtitle">Registra las observaciones de la sesión</p>
+    </div>
+  </div>
+
+  <%= render "form", patient_note: @patient_note %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", patient_notes_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

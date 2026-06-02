@@ -1,0 +1,50 @@
+<% content_for :title, "Citas" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Citas</h1>
+      <p class="page-subtitle">Agenda de citas del centro</p>
+    </div>
+    <%= link_to "Nueva cita", new_appointment_path, class: "btn-primary" %>
+  </div>
+
+  <% if notice.present? %>
+    <div class="flash-notice"><%= notice %></div>
+  <% end %>
+
+  <% if @appointments.any? %>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Paciente</th>
+          <th>Servicio</th>
+          <th>Terapeuta</th>
+          <th>Fecha y hora</th>
+          <th>Estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @appointments.each do |appointment| %>
+          <tr>
+            <td><strong><%= appointment.patient.full_name %></strong></td>
+            <td><%= appointment.service.name %></td>
+            <td><%= appointment.therapist.name %></td>
+            <td><%= appointment.scheduled_at&.strftime("%d/%m/%Y %H:%M") %></td>
+            <td>
+              <% if appointment.status.present? %>
+                <span class="status-badge status-<%= appointment.status %>"><%= appointment.status.capitalize %></span>
+              <% end %>
+            </td>
+            <td class="actions">
+              <%= link_to "Ver", appointment, class: "btn-sm btn-sm-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class="table-empty">No hay citas todavía. <%= link_to "Añade la primera", new_appointment_path %>.</div>
+  <% end %>
+</div>

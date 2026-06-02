@@ -1,0 +1,16 @@
+<% content_for :title, "Editar entrada" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Editar entrada</h1>
+      <p class="page-subtitle"><%= @post.title %></p>
+    </div>
+  </div>
+
+  <%= render "form", post: @post %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", @post, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

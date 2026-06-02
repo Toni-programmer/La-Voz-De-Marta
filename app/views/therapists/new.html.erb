@@ -1,0 +1,16 @@
+<% content_for :title, "Nuevo terapeuta" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Nuevo terapeuta</h1>
+      <p class="page-subtitle">Añade un profesional al centro</p>
+    </div>
+  </div>
+
+  <%= render "form", therapist: @therapist %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", therapists_path, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :title, "Editar terapeuta" %>
+
+<div class="page-wrapper">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Editar terapeuta</h1>
+      <p class="page-subtitle"><%= @therapist.name %></p>
+    </div>
+  </div>
+
+  <%= render "form", therapist: @therapist %>
+
+  <div class="action-bar">
+    <%= link_to "← Volver", @therapist, class: "btn-sm btn-sm-secondary" %>
+  </div>
+</div>
